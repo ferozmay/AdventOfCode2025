@@ -94,6 +94,9 @@
   <!-- Main Title -->
   <text x="400" y="80" text-anchor="middle" class="main-text">Advent of Code 2025</text>
   
+  <!-- RUST text -->
+  <text x="680" y="370" text-anchor="middle" style="font-family: 'Courier New', monospace; font-size: 32px; font-weight: bold; fill: #ff6347; filter: drop-shadow(0 0 5px #ff6347);">RUST</text>
+  
   <!-- Christmas Tree -->
   <g transform="translate(340, 120)">
     <!-- Orbiting star -->
