@@ -1,0 +1,195 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes twinkle1 {
+      0%, 100% { opacity: 1; fill: #ffff00; }
+      25% { opacity: 0.4; fill: #00ffff; }
+      50% { opacity: 0.8; fill: #ff0000; }
+      75% { opacity: 0.5; fill: #00ff00; }
+    }
+    
+    @keyframes twinkle2 {
+      0%, 100% { opacity: 0.5; fill: #ff00ff; }
+      25% { opacity: 1; fill: #ffff00; }
+      50% { opacity: 0.4; fill: #ff0000; }
+      75% { opacity: 0.9; fill: #00ffff; }
+    }
+    
+    @keyframes twinkle3 {
+      0%, 100% { opacity: 0.8; fill: #ff0000; }
+      25% { opacity: 0.5; fill: #00ff00; }
+      50% { opacity: 1; fill: #00ffff; }
+      75% { opacity: 0.4; fill: #ff00ff; }
+    }
+    
+    @keyframes orbit-star {
+      0% { 
+        transform: rotate(0deg) translateX(80px) rotate(0deg);
+        filter: drop-shadow(0 0 5px #ffff00);
+      }
+      25% { 
+        filter: drop-shadow(0 0 15px #ffff00);
+      }
+      50% { 
+        transform: rotate(180deg) translateX(80px) rotate(-180deg);
+        filter: drop-shadow(0 0 5px #ffff00);
+      }
+      75% { 
+        filter: drop-shadow(0 0 15px #ffff00);
+      }
+      100% { 
+        transform: rotate(360deg) translateX(80px) rotate(-360deg);
+        filter: drop-shadow(0 0 5px #ffff00);
+      }
+    }
+    
+    .main-text {
+      font-family: 'Courier New', monospace;
+      font-size: 42px;
+      font-weight: bold;
+      fill: #00ff00;
+      text-shadow: 0 0 10px #00ff00;
+    }
+    
+    .tree {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      fill: #00ff00;
+    }
+    
+    .tree-trunk {
+      fill: #8b4513;
+    }
+    
+    .light {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      transform-origin: center;
+    }
+    
+    .light1 { animation-name: twinkle1; animation-delay: 0s; }
+    .light2 { animation-name: twinkle2; animation-delay: 0.3s; }
+    .light3 { animation-name: twinkle3; animation-delay: 0.6s; }
+    .light4 { animation-name: twinkle1; animation-delay: 0.9s; }
+    .light5 { animation-name: twinkle2; animation-delay: 1.2s; }
+    .light6 { animation-name: twinkle3; animation-delay: 1.5s; }
+    
+    .star {
+      fill: #ffff00;
+      animation: orbit-star 4s linear infinite;
+      transform-origin: center;
+    }
+    
+    .glow {
+      filter: drop-shadow(0 0 3px currentColor);
+    }
+  </style>
+  
+  <rect width="800" height="400" fill="#0d1117"/>
+  
+  <!-- Main Title -->
+  <text x="400" y="80" text-anchor="middle" class="main-text">Advent of Code 2025</text>
+  
+  <!-- Christmas Tree -->
+  <g transform="translate(340, 120)">
+    <!-- Orbiting star -->
+    <g transform="translate(60, 60)">
+      <text x="0" y="0" class="tree star" font-size="24" text-anchor="middle" dominant-baseline="middle">★</text>
+    </g>
+    
+    <!-- Big golden star at top of tree -->
+    <text x="60" y="0" class="tree" font-size="28" text-anchor="middle" dominant-baseline="middle" style="fill: #ffd700; filter: drop-shadow(0 0 8px #ffd700);">★</text>
+    
+    <!-- Tree layers with lights -->
+    <text x="50" y="25" class="tree">   *</text>
+    <circle cx="63" cy="21" r="3" class="light light1 glow"/>
+    
+    <text x="40" y="45" class="tree">  / | \</text>
+    <circle cx="48" cy="41" r="3" class="light light2 glow"/>
+    <circle cx="68" cy="41" r="3" class="light light3 glow"/>
+    
+    <text x="30" y="65" class="tree"> /  |  \</text>
+    <circle cx="38" cy="61" r="3" class="light light4 glow"/>
+    <circle cx="58" cy="61" r="3" class="light light1 glow"/>
+    <circle cx="78" cy="61" r="3" class="light light5 glow"/>
+    
+    <text x="20" y="85" class="tree">/   |   \</text>
+    <circle cx="28" cy="81" r="3" class="light light6 glow"/>
+    <circle cx="48" cy="81" r="3" class="light light2 glow"/>
+    <circle cx="68" cy="81" r="3" class="light light3 glow"/>
+    <circle cx="88" cy="81" r="3" class="light light4 glow"/>
+    
+    <text x="10" y="105" class="tree">/    |    \</text>
+    <circle cx="18" cy="101" r="3" class="light light5 glow"/>
+    <circle cx="38" cy="101" r="3" class="light light1 glow"/>
+    <circle cx="58" cy="101" r="3" class="light light6 glow"/>
+    <circle cx="78" cy="101" r="3" class="light light2 glow"/>
+    <circle cx="98" cy="101" r="3" class="light light3 glow"/>
+    
+    <!-- Tree trunk -->
+    <text x="50" y="125" class="tree tree-trunk">  |||</text>
+    <text x="50" y="140" class="tree tree-trunk">  |||</text>
+    
+    <!-- Base decoration -->
+    <text x="60" y="160" class="tree" text-anchor="middle">~~~~~~~~~~~~~~</text>
+    
+    <!-- Stick figure boys surrounding and looking at the tree -->
+    <!-- F - Left side, pointing at tree -->
+    <g transform="translate(-90, 85)">
+      <!-- Head with -_- expression -->
+      <circle cx="0" cy="0" r="9" fill="none" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-5" y1="-1" x2="-1" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="1" y1="-1" x2="5" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-3" y1="3" x2="3" y2="3" stroke="#00ff00" stroke-width="1.5"/>
+      <!-- Body -->
+      <line x1="0" y1="9" x2="0" y2="38" stroke="#00ff00" stroke-width="2"/>
+      <!-- Arms - left pointing at tree -->
+      <line x1="0" y1="16" x2="18" y2="12" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="16" x2="-12" y2="22" stroke="#00ff00" stroke-width="2"/>
+      <!-- Legs -->
+      <line x1="0" y1="38" x2="-10" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="38" x2="8" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <text x="0" y="73" class="tree" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffd700">F</text>
+    </g>
+    
+    <!-- A - Right side, arms up in excitement -->
+    <g transform="translate(150, 87)">
+      <!-- Head with -_- expression -->
+      <circle cx="0" cy="0" r="9" fill="none" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-5" y1="-1" x2="-1" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="1" y1="-1" x2="5" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-3" y1="3" x2="3" y2="3" stroke="#00ff00" stroke-width="1.5"/>
+      <!-- Body -->
+      <line x1="0" y1="9" x2="0" y2="38" stroke="#00ff00" stroke-width="2"/>
+      <!-- Arms - both raised -->
+      <line x1="0" y1="16" x2="-15" y2="8" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="16" x2="15" y2="8" stroke="#00ff00" stroke-width="2"/>
+      <!-- Legs -->
+      <line x1="0" y1="38" x2="-9" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="38" x2="9" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <text x="0" y="73" class="tree" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffd700">A</text>
+    </g>
+    
+    <!-- S - Front center-left, casual stance -->
+    <g transform="translate(-20, 90)">
+      <!-- Head with -_- expression -->
+      <circle cx="0" cy="0" r="9" fill="none" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-5" y1="-1" x2="-1" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="1" y1="-1" x2="5" y2="-1" stroke="#00ff00" stroke-width="2"/>
+      <line x1="-3" y1="3" x2="3" y2="3" stroke="#00ff00" stroke-width="1.5"/>
+      <!-- Body -->
+      <line x1="0" y1="9" x2="0" y2="38" stroke="#00ff00" stroke-width="2"/>
+      <!-- Arms - relaxed, one hand in pocket pose -->
+      <line x1="0" y1="16" x2="-10" y2="28" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="16" x2="12" y2="26" stroke="#00ff00" stroke-width="2"/>
+      <!-- Legs - standing -->
+      <line x1="0" y1="38" x2="-8" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <line x1="0" y1="38" x2="10" y2="58" stroke="#00ff00" stroke-width="2"/>
+      <text x="0" y="73" class="tree" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffd700">S</text>
+    </g>
+  </g>
+</svg>
