@@ -3,11 +3,6 @@ use std::fs;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-
-    if args.len() < 2 {
-        eprintln!("Usage: {} <filename>", args[0]);
-        return;
-    }
     let f = &args[1];
     let data = fs::read_to_string(f).expect("Failed to read file");
 
@@ -22,7 +17,6 @@ fn main() {
             let dist_to_zero = (100 - dial_pos) % 100;
             let crossings = (steps + dist_to_zero) / 100;
             part2 += crossings;
-
             dial_pos = (dial_pos - steps).rem_euclid(100);
         } else {
             let crossings = (dial_pos + steps) / 100;
