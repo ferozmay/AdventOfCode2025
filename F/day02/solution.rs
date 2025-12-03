@@ -1,29 +1,34 @@
 use std::env;
 use std::fs;
 
+fn is_invalid_id(id: i64) -> bool {
+    let id_str = id.to_string();
+    if id_str.len() % 2 != 0 {
+        return false;
+    }
+    let (split1, split2) = id_str.split_at(id_str.len() / 2);
+    split1 == split2
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
-
-    let file = &args[1];
-    let data = fs::read_to_string(file).unwrap();
+    let data = fs::read_to_string(&args[1]).unwrap();
     let mut sum: i64 = 0;
 
     for range in data.split(",") {
-        let low = range.split("-").next().unwrap().parse::<String>().unwrap();
-        let high = range.split("-").nth(1).unwrap().parse::<String>().unwrap();
+        let parts: Vec<&str> = range.split('-').collect();
+        let (low, high) = (parts[0], parts[1]);
 
         if (low.len() == high.len()) && low.len() % 2 != 0 {
             continue;
         }
 
-        let low_int = low.parse::<i64>().unwrap();
-        let high_int = high.parse::<i64>().unwrap();
+        let low_int: i64 = low.parse().unwrap();
+        let high_int: i64 = high.parse().unwrap();
 
-        for number in low_int..high_int + 1 {
-            let num_str = number.to_string();
-            let (split1, split2) = num_str.split_at(num_str.len() / 2);
-            if split1 == split2 {
-                sum += number;
+        for n in low_int..high_int + 1 {
+            if is_invalid_id(n) {
+                sum += n;
             }
         }
     }
