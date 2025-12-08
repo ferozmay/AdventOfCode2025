@@ -1,7 +1,6 @@
 use std::env;
 use std::fs;
 
-// INCOMPLETE
 fn main() {
     let data = fs::read_to_string(env::args().nth(1).unwrap()).unwrap();
 
@@ -15,8 +14,6 @@ fn main() {
             let mut rolls = 0;
             for rr in [-1_i32, 0, 1] {
                 for cc in [-1_i32, 0, 1] {
-                    let nr = ri + rr;
-                    let nc = ci + cc;
                     if 0 <= rr && rr <= r && 0 <= cc && cc <= c {
                         if grid[r + rr][c + cc] == '@' {
                             rolls += 1;
