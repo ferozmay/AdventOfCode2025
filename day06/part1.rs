@@ -6,12 +6,15 @@ fn main() {
     let data = fs::read_to_string(env::args().nth(1).unwrap()).unwrap();
 
     let lines: Vec<&str> = data.lines().collect();
-    let symbols = lines[lines.len() - 1];
+    let n = lines.len() - 1;
+    let symbols = lines[n];
 
-    for i in 0..lines.len() - 1 {
-        // let vals = line.split().unwrap();
-        let vals = line.split(" ").collect();
-        println!("{}", lines[i]);
-        println!();
-    }
+    println!("{}", n);
+    println!("{}", symbols);
+
+    // for i in 0..n {
+    //     let vals = lines[i].split(" ").collect();
+    //     println!("{}", lines[i]);
+    //     println!();
+    // }
 }
